@@ -1,0 +1,1412 @@
+<!-- Styles -->
+<style>
+  .py-12 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .px-19 {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+
+  .mx-24 {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  @media (max-width: 425px) {
+    .px-19 {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+
+  .font-36 {
+    font-size: 24px;
+  }
+  @media (min-width: 576px) {
+    .font-36 {
+      font-size: 30px;
+    }
+  }
+  @media (min-width: 992px) {
+    .font-36 {
+      font-size: 36px;
+    }
+  }
+
+  .border-color-f0 {
+    border-color: #e2e8f0;
+  }
+
+  .text-color-1b {
+    color: #18181b;
+  }
+
+  .text-color-51 {
+    color: #374151;
+  }
+
+  .fw-semibold {
+    font-weight: 600;
+  }
+
+  .product-images .main-image {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+  }
+
+  .thumbnail {
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .thumbnail:hover {
+    opacity: 0.8;
+  }
+
+  .thumbnail.active {
+    border-color: var(--bs-primary) !important;
+  }
+
+  .rating-stars {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #ffb800;
+  }
+
+  .rating-count {
+    font-size: 14px;
+    color: #666;
+    margin-left: 8px;
+  }
+
+  .quantity-input {
+    -moz-appearance: textfield;
+    text-align: center;
+  }
+
+  .quantity-input::-webkit-outer-spin-button,
+  .quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .product-tabs .nav-link {
+    cursor: pointer;
+  }
+
+  .product-tabs .nav-link.active {
+    font-weight: 500;
+  }
+
+  /* Add these new styles for better feedback */
+  .add-to-cart-btn .spinner {
+    display: none;
+    margin-right: 8px;
+  }
+
+  .add-to-cart-btn.loading .spinner {
+    display: inline-block;
+  }
+
+  .add-to-cart-btn.loading .btn-text {
+    display: none;
+  }
+
+  @media (max-width: 767.98px) {
+    .product-images {
+      margin-bottom: 30px;
+    }
+
+    .thumbnail-row {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 10px;
+    }
+
+    .thumbnail {
+      flex: 0 0 auto;
+    }
+
+    .product-tabs .nav-tabs {
+      flex-direction: row;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+
+    .product-tabs .nav-link {
+      white-space: nowrap;
+      margin-bottom: 0;
+      margin-right: 5px;
+    }
+
+    .product-title {
+      font-size: 24px;
+    }
+
+    .add-to-cart .btn {
+      font-size: 18px;
+      padding: 12px;
+    }
+
+    .quantity-input {
+      -moz-appearance: textfield;
+      width: 60px;
+      text-align: center;
+      font-weight: bold;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .quantity-input:focus {
+      box-shadow: none;
+      border-color: #dee2e6;
+    }
+
+    .quantity-btn {
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+  }
+
+  .form-check-input.custom-radio {
+    appearance: none;
+    /* reset native radio styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-1b);
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-color: white;
+  }
+
+  .form-check-input.custom-radio:checked {
+    background-color: var(--color-1b);
+  }
+
+  /* Size Button Base Styles */
+  .size-btn {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    color: black !important;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    user-select: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Remove focus outline on tap */
+  .size-btn:focus-visible {
+    outline: none;
+  }
+
+  /* Hover & Active Effects */
+  .size-btn:hover,
+  .size-btn:active {
+    background-color: black !important;
+    color: white !important;
+  }
+
+  /* Selected (Checked) State */
+  .variant-selector:checked + .size-btn {
+    background-color: black !important;
+    color: white !important;
+    border-color: black !important;
+  }
+
+  /* sizze btn end  */
+  /* Hide Bootstrap's default arrow */
+  .accordion-button::after {
+    display: none !important;
+  }
+
+  /* Custom accordion button styling */
+  .custom-accordion-btn {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0.75rem 0 !important;
+  }
+
+  /* Custom toggle + and - */
+  .accordion-toggle {
+    font-size: 1.25rem;
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 30px;
+  }
+
+  .accordion-button:not(.collapsed) .accordion-toggle {
+    content: '-';
+  }
+
+  /* Title styling */
+  .accordion-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  /* Remove default borders */
+  .accordion-item {
+    border: none !important;
+  }
+
+  /* scope everything under this class  */
+  .custom-faq-section .faq-toggle-wrapper {
+    background: #fff;
+    color: #000;
+  }
+
+  /* question bar when open */
+  .custom-faq-section .accordion-button:not(.collapsed) {
+    background: #000;
+    color: #fff;
+  }
+
+  .custom-faq-section .accordion-button:not(.collapsed) span {
+    color: #fff;
+  }
+
+  /* remove Bootstrap’s chevron */
+  .custom-faq-section .accordion-button::after {
+    display: none;
+  }
+
+  .custom-faq-section .icon-holder {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+
+  .custom-faq-section .icon-plus,
+  .custom-faq-section .icon-minus {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .custom-faq-section .icon-minus {
+    opacity: 0;
+  }
+
+  .custom-faq-section .accordion-button:not(.collapsed) .icon-plus {
+    opacity: 0;
+  }
+
+  .custom-faq-section .accordion-button:not(.collapsed) .icon-minus {
+    opacity: 1;
+  }
+
+  /* answer area when open (uses .show from Bootstrap) */
+  .custom-faq-section .accordion-collapse.show .accordion-body {
+    background: #000;
+    color: #fff;
+  }
+</style>
+
+<div class="container my-5">
+  <div class="row">
+    <!-- Product Images -->
+    <div class="col-md-6">
+      <div class="product-images">
+        {% if product.media.size > 0 %}
+          <div class="main-image mb-3">
+            {% assign featured_image = product.featured_image %}
+            <img
+              src="{{ featured_image | img_url: '800x' }}"
+              alt="{{ featured_image.alt | escape }}"
+              class="img-fluid rounded"
+              width="800"
+              height="800"
+              loading="eager"
+              id="mainProductImage"
+            >
+          </div>
+
+          {% if product.media.size > 1 %}
+            <div class="thumbnail-row d-flex gap-2">
+              {% for media in product.media %}
+                <div class="thumbnail" style="width: 80px;">
+                  <img
+                    src="{{ media | img_url: '150x' }}"
+                    alt="{{ media.alt | escape }}"
+                    class="img-fluid rounded border {% if forloop.first %}active{% endif %}"
+                    width="80"
+                    height="80"
+                    loading="lazy"
+                    data-fullsize="{{ media | img_url: '800x' }}"
+                    onclick="changeMainImage(this)"
+                  >
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-lg-6 col-12 ps-lg-5 pt-0 mt-1 mt-lg-3">
+      <div class="product-info">
+        <h1 class="product-title mb-3 text-color-1b text-capitalize fw-semibold font-36">
+          {{ product.title }}
+        </h1>
+
+        <!-- Product Rating -->
+        <div class="product-rating mb-3">
+          {% if product.metafields.reviews.rating.value != blank %}
+            {% assign rating = product.metafields.reviews.rating.value.rating | floor %}
+            <div class="d-flex align-items-center">
+              <div class="rating-stars" aria-label="Rating: {{ rating }} out of 5 stars">
+                {% for i in (1..5) %}
+                  {% if i <= rating -%}
+                    <i class="fa-solid fa-star text-color-15"></i>
+                  {%- else -%}
+                    <i class="fa-regular fa-star text-color-15"></i>
+                  {%- endif %}
+                {% endfor %}
+              </div>
+              <span class="rating-count">({{ product.metafields.reviews.rating_count.value }} reviews)</span>
+            </div>
+          {% else %}
+            <p>No reviews yet</p>
+          {% endif %}
+        </div>
+
+        <!-- Price -->
+        <div class="product-price mb-3" data-price-container>
+          <span class="h4" data-price>{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            <span class="text-muted text-decoration-line-through ms-2 d-none" data-compare-price>
+              {{ product.compare_at_price | money }}
+            </span>
+            <span class="badge bg-danger ms-2 d-none" data-save-badge>
+              Save {{ product.compare_at_price | minus: product.price | money }}
+            </span>
+          {% endif %}
+        </div>
+
+        {% unless product.has_only_default_variant %}
+          <div class="product-variants mb-3">
+            {% for option in product.options_with_values %}
+              {% assign option_name = option.name | downcase %}
+
+              {% if option_name contains 'size' %}
+                <!-- Size Option -->
+                <div class="product-option product-option-size mb-4">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <label class="form-label d-block text-color-1b font-20 fw-semibold mb-12">Size</label>
+                    <button
+                      style="
+                        background-color: transparent;
+                        border: none;
+                        text-decoration: underline;
+                      "
+                      type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#sizeGuideModal"
+                    >
+                      Size Guide
+                    </button>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2">
+                    {% for value in option.values %}
+                      {% assign id_string = 'size-option-' | append: forloop.index0 %}
+
+                      <!-- Hidden radio input -->
+                      <input
+                        type="radio"
+                        class="d-none variant-selector"
+                        name="option-{{ forloop.parentloop.index0 }}"
+                        id="{{ id_string }}"
+                        value="{{ value }}"
+                        data-option-index="{{ forloop.parentloop.index0 }}"
+                        {% if option.selected_value == value %}
+                          checked
+                        {% endif %}
+                      >
+
+                      <!-- Visible button-style label -->
+                      <label
+                        class="size-btn border border-color-f0 bg-white d-flex align-items-center justify-content-center"
+                        for="{{ id_string }}"
+                      >
+                        {{ value }}
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+              {% elsif option_name contains 'resistance' %}
+                <!-- Resistance Bands Option -->
+                <div class="product-option product-option-resistance mb-4">
+                  <label class="form-label d-block text-color-1b font-20 fw-semibold mb-12"
+                    >Number of Built-in Resistance Bands</label
+                  >
+                  <div class="bg-color-fc p-3 border border-color-f0">
+                    {% for value in option.values %}
+                      {% assign id_string = 'resistance-option-' | append: forloop.index0 %}
+                      <div class="form-check mb-12 d-flex align-items-center">
+                        <input
+                          class="form-check-input variant-selector custom-radio"
+                          type="radio"
+                          name="option-{{ forloop.parentloop.index0 }}"
+                          id="{{ id_string }}"
+                          value="{{ value }}"
+                          data-option-index="{{ forloop.parentloop.index0 }}"
+                          {% if option.selected_value == value %}
+                            checked
+                          {% endif %}
+                        >
+                        <label class="form-check-label text-color-1b" for="{{ id_string }}">{{ value }}</label>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+
+              {% else %}
+                <!-- Other Options -->
+                {% comment %}
+                  <div class="product-option product-option-other mb-4">
+                    <label class="form-label d-block text-color-1b font-20 fw-semibold mb-12">{{ option.name }}</label>
+                    <div class="d-flex flex-wrap gap-2">
+                      {% for value in option.values %}
+                        {% assign id_string = 'option-other-' | append: forloop.index0 %}
+                        <div class="form-check">
+                          <input
+                            class="form-check-input variant-selector"
+                            type="radio"
+                            name="option-{{ forloop.parentloop.index0 }}"
+                            id="{{ id_string }}"
+                            value="{{ value }}"
+                            data-option-index="{{ forloop.parentloop.index0 }}"
+                            {% if option.selected_value == value %}
+                              checked
+                            {% endif %}
+                          >
+                          <label class="form-check-label" for="{{ id_string }}">{{ value }}</label>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcomment %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        <!-- Stock Status -->
+        <p class="{% if product.available %}text-success{% else %}text-danger{% endif %} mb-2" data-availability>
+          <i class="bi bi-{% if product.available %}check{% else %}x{% endif %}-circle-fill"></i>
+          {% if product.available %}
+            In Stock
+            {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' %}
+              ({{ product.selected_or_first_available_variant.inventory_quantity }} available)
+            {%- endif %}
+          {% else %}
+            Out of Stock
+          {% endif %}
+        </p>
+
+        <!-- Quantity Selector -->
+        <div class="d-flex gap-3 align-items-start">
+          <div class="quantity-selector">
+            <div class="input-group border border-black d-flex align-items-center px-16 py-12">
+              <button
+                style="background-color: transparent"
+                class="quantity-minus quantity-btn border-0"
+                type="button"
+                aria-label="Decrease quantity"
+              >
+                -
+              </button>
+              <input
+                style="margin-left: 0 !important; width: 50px"
+                type="number"
+                id="productQuantity"
+                name="quantity"
+                value="1"
+                min="1"
+                class="text-center quantity-input text-color-51 border-0"
+                aria-label="Quantity"
+                readonly
+              >
+              <button
+                style="background-color: transparent"
+                class="quantity-plus quantity-btn border-0"
+                type="button"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <div class="add-to-cart flex-grow-1">
+            <button
+              class="add-to-cart-btn add-to-cart-btn w-100 h-100 py-12 bg-black text-white border-0"
+              {% unless product.available %}
+                disabled
+              {% endunless %}
+              aria-label="Add to cart"
+            >
+              <span class="spinner spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span class="btn-text">
+                {% if product.available %}
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                {% else %}
+                  Sold Out
+                {% endif %}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- bootstrap according -->
+        <div class="accordion accordion-flush" id="accordionExample">
+          <!-- Product Details Accordion Item -->
+          <div class="accordion-item border-0 mb-3">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button p-0 bg-transparent shadow-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                <div
+                  class="d-flex justify-content-between w-100 align-items-center"
+                >
+                  <span
+                    class="font-20 fw-semibold text-color-1b mt-4 mb-3"
+                    >Product Details</span
+                  >
+                  <span class="accordion-toggle">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 8H15"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        class="accordion-minus" />
+                      <path
+                        d="M8 1V15"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        class="accordion-plus" />
+                    </svg>
+                  </span>
+                </div>
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#accordionExample"
+            >
+              <div
+                class="accordion-body px-0 pt-3 border-top border-color-e7"
+              >
+                <p class="mb-24 text-color-46">
+                  Let your pants do the workout for you: Lose weight, build muscle and get fitter while living your life
+                </p>
+                <div class="space-y-3">
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Built-in resistance bands turn every movement into a mini workout</span>
+                  </p>
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Stay fit without going to the gym – perfect for busy women</span>
+                  </p>
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Designed for comfort and style – wear them anywhere, anytime</span>
+                  </p>
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>14-day risk-free trial – see the difference or get your money back</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technology Accordion Item -->
+          <div class="accordion-item border-0 mb-3">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button p-0 bg-transparent shadow-none collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                <div
+                  class="d-flex justify-content-between w-100 align-items-center"
+                >
+                  <span class="font-20 fw-semibold text-color-1b mb-3"> Technology </span>
+                  <span class="accordion-toggle">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 8H15"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        class="accordion-minus" />
+                      <path
+                        d="M8 1V15"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        class="accordion-plus" />
+                    </svg>
+                  </span>
+                </div>
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div
+                class="accordion-body px-0 pt-3 border-top border-color-e7"
+              >
+                <div class="space-y-3">
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Built-in bands offer smooth, consistent resistance without bulky external gear.</span>
+                  </p>
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Engineered for flexibility, durability, and breathability during any activity.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fitness Meets Life Accordion Item -->
+          <div class="accordion-item border-0">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button p-0 bg-transparent shadow-none collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                <div
+                  class="d-flex justify-content-between w-100 align-items-center"
+                >
+                  <span class="font-20 fw-semibold text-color-1b mb-3">Fitness Meets Live</span>
+                  <span class="accordion-toggle">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 8H15"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        class="accordion-minus" />
+                      <path
+                        d="M8 1V15"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        class="accordion-plus" />
+                    </svg>
+                  </span>
+                </div>
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div
+                class="accordion-body px-0 pt-3 border-top border-color-e7"
+              >
+                <div class="space-y-3">
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Seamlessly integrates fitness into your daily routine</span>
+                  </p>
+                  <p
+                    class="d-flex align-items-start gap-2 text-color-0b"
+                  >
+                    <img
+                      width=""
+                      height=""
+                      src="{{ 'icon_seal_check.svg' | asset_url }}"
+                      alt="icon"
+                      class="mt-1"
+                    >
+                    <span>Enhances natural movements without restricting mobility</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Size Guide Modal -->
+<div class="modal fade" id="sizeGuideModal" tabindex="-1" aria-labelledby="sizeGuideModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sizeGuideModalLabel">Size Guide</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Add your size guide content here -->
+        <p>Size guide content goes here...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Product data for debugging
+    console.groupCollapsed('Product Data');
+    console.log('Title:', '{{ product.title }}');
+    console.log('ID:', '{{ product.id }}');
+    console.log('Variants:', {{ product.variants | json }});
+    console.log('Options:', {{ product.options_with_values | json }});
+    console.log('Media:', {{ product.media | json }});
+    console.groupEnd();
+
+    // Initialize components
+    initImageGallery();
+    initQuantitySelector();
+    initVariantSelectors();
+    initAddToCart();
+    initTabs();
+  });
+
+  // Helper function to get current quantity
+function getCurrentQuantity() {
+  const input = document.getElementById('productQuantity');
+  return parseInt(input.value) || 1;
+}
+  // Image Gallery
+  function initImageGallery() {
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnails = document.querySelectorAll('.thumbnail img');
+
+    if (!mainImage || !thumbnails.length) return;
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function() {
+        const newSrc = this.dataset.fullsize;
+        if (newSrc) {
+          mainImage.src = newSrc;
+          mainImage.alt = this.alt;
+
+          // Update active thumbnail
+          document.querySelectorAll('.thumbnail img').forEach(img => {
+            img.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // Quantity Selector
+  function initQuantitySelector() {
+  const minusBtn = document.querySelector('.quantity-minus');
+  const plusBtn = document.querySelector('.quantity-plus');
+  const input = document.getElementById('productQuantity');
+
+  if (!minusBtn || !plusBtn || !input) return;
+
+  const updateTotalPrice = () => {
+    const quantity = parseInt(input.value) || 1;
+    const variant = findSelectedVariant();
+    if (variant) {
+      const totalPrice = variant.price * quantity;
+      updatePrice(variant, totalPrice, quantity);
+    }
+  };
+
+  // Handle minus button
+  minusBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    let value = parseInt(input.value) || 1;
+    if (value > 1) {
+      input.value = value - 1;
+      updateTotalPrice();
+    }
+  });
+
+  // Handle plus button
+  plusBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    let value = parseInt(input.value) || 1;
+    input.value = value + 1;
+    updateTotalPrice();
+  });
+
+  // Validate input and update price
+  input.addEventListener('change', () => {
+    let value = parseInt(input.value);
+    if (isNaN(value) || value < 1) {
+      value = 1;
+    }
+    input.value = value;
+    updateTotalPrice();
+  });
+
+  // Initialize price on load
+  updateTotalPrice();
+}
+
+  // Variant Selectors
+function initVariantSelectors() {
+  const variantInputs = document.querySelectorAll('.variant-selector');
+
+  if (!variantInputs.length) return;
+
+  variantInputs.forEach(input => {
+    input.addEventListener('change', function () {
+      const selectedVariant = findSelectedVariant();
+      const quantity = getCurrentQuantity();
+
+      if (selectedVariant) {
+        updatePrice(selectedVariant, selectedVariant.price * quantity, quantity);
+        updateAvailability(selectedVariant);
+        updateAddToCartButton(selectedVariant);
+      }
+    });
+  });
+}
+
+// Helper function to find the selected variant
+function findSelectedVariant() {
+  const optionCount = {{ product.options_with_values.size }};
+  const selectedOptions = [];
+
+  for (let i = 0; i < optionCount; i++) {
+    const selected = document.querySelector(`input[name="option-${i}"]:checked`);
+    selectedOptions.push(selected ? selected.value : null);
+  }
+
+  const variant = {{ product.variants | json }}.find(v => {
+    return v.options.every((opt, idx) => opt === selectedOptions[idx]);
+  });
+
+  return variant || {{ product.selected_or_first_available_variant | json }};
+}
+
+// Update price display
+function updatePrice(variant, totalPrice = null, quantity = 1) {
+  const priceElement = document.querySelector('.product-price .h4');
+  const comparePriceElement = document.querySelector('.product-price .text-decoration-line-through');
+  const saveBadge = document.querySelector('.product-price .badge');
+
+  if (!priceElement) return;
+
+  // Use Shopify's money format if available, otherwise fallback
+  const formatMoney = window.Shopify?.formatMoney || function(cents) {
+    return '$' + (cents / 100).toFixed(2);
+  };
+
+  // Calculate prices
+  const displayPrice = totalPrice !== null ? totalPrice : variant.price;
+  const displayComparePrice = totalPrice !== null ?
+    (variant.compare_at_price * quantity) :
+    variant.compare_at_price;
+
+  // Update main price
+  priceElement.textContent = formatMoney(displayPrice);
+
+  // Update compare price if applicable
+  if (variant.compare_at_price > variant.price) {
+    if (!comparePriceElement) {
+      const priceContainer = document.querySelector('.product-price');
+      const newComparePrice = document.createElement('span');
+      newComparePrice.className = 'text-muted text-decoration-line-through ms-2';
+      priceContainer.appendChild(newComparePrice);
+      comparePriceElement = newComparePrice;
+    }
+
+    if (!saveBadge) {
+      const priceContainer = document.querySelector('.product-price');
+      const newBadge = document.createElement('span');
+      newBadge.className = 'badge bg-danger ms-2';
+      priceContainer.appendChild(newBadge);
+      saveBadge = newBadge;
+    }
+
+    comparePriceElement.textContent = formatMoney(displayComparePrice);
+    const savings = displayComparePrice - displayPrice;
+    saveBadge.textContent = 'Save ' + formatMoney(savings);
+
+    // Show elements if they were hidden
+    comparePriceElement.style.display = 'inline';
+    saveBadge.style.display = 'inline';
+  } else {
+    // Hide compare price elements if they exist
+    if (comparePriceElement) comparePriceElement.style.display = 'none';
+    if (saveBadge) saveBadge.style.display = 'none';
+  }
+
+  // Update add to cart button text
+  const addToCartBtn = document.querySelector('.add-to-cart-btn');
+  if (addToCartBtn && variant.available) {
+    const btnText = addToCartBtn.querySelector('.btn-text');
+    if (btnText) {
+      btnText.innerHTML = `<i class="bi bi-cart-plus"></i> Add to Cart`;
+    }
+  }
+}
+
+// Update availability display
+function updateAvailability(variant) {
+  const availabilityElement = document.querySelector('.product-info .text-success, .product-info .text-danger');
+
+  if (!availabilityElement) return;
+
+  if (variant.available) {
+    availabilityElement.className = 'text-success mb-2';
+    availabilityElement.innerHTML = `<i class="bi bi-check-circle-fill"></i> In Stock${
+      variant.inventory_management === 'shopify' && variant.inventory_quantity > 0
+        ? ` (${variant.inventory_quantity} available)`
+        : ''
+    }`;
+  } else {
+    availabilityElement.className = 'text-danger mb-2';
+    availabilityElement.innerHTML = '<i class="bi bi-x-circle-fill"></i> Out of Stock';
+  }
+}
+
+// Add to Cart Function
+function initAddToCart() {
+  const addToCartBtn = document.querySelector('.add-to-cart-btn');
+  const quantityInput = document.getElementById('productQuantity');
+
+  if (!addToCartBtn || !quantityInput) return;
+
+  addToCartBtn.addEventListener('click', async function (e) {
+    e.preventDefault();
+    if (this.disabled) return;
+
+    const quantity = parseInt(quantityInput.value) || 1;
+    const variant = typeof findSelectedVariant === 'function' ? findSelectedVariant() : null;
+
+    if (!variant || !variant.available) {
+      typeof showAlert === 'function' && showAlert('This product is not available', 'danger');
+      return;
+    }
+
+    // Loading state
+    this.classList.add('loading');
+    this.disabled = true;
+
+    try {
+      const res = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: JSON.stringify({
+          id: variant.id,
+          quantity,
+        }),
+      });
+
+      if (!res.ok) throw new Error(`Add to cart failed. Status: ${res.status}`);
+
+      const data = await res.json();
+      console.log('Added to cart:', data);
+
+      // Update cart count
+      if (typeof updateCartCount === 'function') {
+        await updateCartCount();
+      }
+          // Open the cart drawer
+      await openCartDrawer();
+
+      // Refresh the cart drawer contents
+      await refreshCartDrawer();
+
+      // Show success alert
+      if (data && data.id) {
+        typeof showAlert === 'function' && showAlert('Item added to cart!', 'success');
+
+        // Auto-open cart drawer
+        if (typeof window.openCartDrawer === 'function') {
+          window.openCartDrawer();
+        }
+      } else {
+        throw new Error('Cart response missing item data');
+      }
+
+    } catch (err) {
+      console.error('Error adding to cart:', err);
+      typeof showAlert === 'function' && showAlert('Failed to add item to cart.', 'danger');
+
+    } finally {
+      this.classList.remove('loading');
+      this.disabled = false;
+    }
+  });
+}
+
+// Function to open cart drawer
+function openCartDrawer() {
+  const cartDrawer = new bootstrap.Offcanvas(document.getElementById('offcanvasRight'));
+  cartDrawer.show();
+}
+
+async function refreshCartDrawer() {
+  try {
+    // Fetch the updated cart contents using sections API
+    const response = await fetch('/?section_id=cart-drawer');
+    if (!response.ok) throw new Error('Failed to fetch cart drawer');
+    
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const newCartDrawer = doc.querySelector('.offcanvas-body');
+    
+    if (newCartDrawer) {
+      document.querySelector('.offcanvas-body').innerHTML = newCartDrawer.innerHTML;
+    }
+  } catch (error) {
+    console.error('Error refreshing cart drawer:', error);
+    // Fallback to manual update if sections API fails
+    await manualUpdateCartDrawer();
+  }
+}
+
+async function manualUpdateCartDrawer() {
+  try {
+    const response = await fetch('/cart.js');
+    if (!response.ok) throw new Error('Failed to fetch cart');
+    
+    const cart = await response.json();
+    const cartDrawer = document.querySelector('.offcanvas-body');
+    const cartHeader = document.querySelector('.offcanvas-header');
+    
+    if (!cartDrawer || !cartHeader) return;
+    
+    // Update cart count in header
+    const cartCountElement = cartHeader.querySelector('.cart-count');
+    if (cartCountElement) {
+      cartCountElement.textContent = cart.item_count;
+    } else {
+      const titleElement = cartHeader.querySelector('.offcanvas-title');
+      if (titleElement) {
+        titleElement.textContent = `Your Cart (${cart.item_count})`;
+      }
+    }
+    
+    if (cart.item_count > 0) {
+      // Fetch the cart item snippet for each item
+      let itemsHTML = '';
+      for (const item of cart.items) {
+        // Get the rendered cart item snippet
+        const itemResponse = await fetch(`/?sections=cart-item&item_key=${item.key}`);
+        if (itemResponse.ok) {
+          const itemData = await itemResponse.json();
+          itemsHTML += itemData['cart-item'];
+        } else {
+          // Fallback to manual rendering if snippet fetch fails
+          itemsHTML += `
+            <div class="cart-item mb-3" data-line="${item.key}">
+              <div class="d-flex">
+                <img src="${item.image}" alt="${item.title}" width="80" class="me-3">
+                <div>
+                  <h6>${item.title}</h6>
+                  <p>${formatMoney(item.price)} x ${item.quantity}</p>
+                  <div class="d-flex align-items-center">
+                    <div class="qty-group me-3">
+                      <button class="btn-qty-decrease" data-line="${item.key}">-</button>
+                      <input type="number" class="cart-qty" data-line="${item.key}" value="${item.quantity}" min="1">
+                      <button class="btn-qty-increase" data-line="${item.key}">+</button>
+                    </div>
+                    <button class="btn-remove-item" data-line="${item.key}">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      // Update the cart drawer
+      cartDrawer.innerHTML = `
+        ${itemsHTML}
+        <div class="border-top pt-3 mt-3">
+          <div class="d-flex justify-content-between fw-bold mb-3">
+            <span>Subtotal:</span>
+            <span>${formatMoney(cart.total_price)}</span>
+          </div>
+          <a href="/checkout" class="btn btn-dark w-100">Checkout</a>
+          {% render 'payment-icons' %}
+        </div>
+      `;
+    } else {
+      cartDrawer.innerHTML = `
+        <div class="text-center py-4">
+          <p>Your cart is empty</p>
+          <a href="/collections/all" class="btn btn-primary">Continue Shopping</a>
+        </div>
+      `;
+    }
+    
+    // Reattach event listeners
+    attachCartEventListeners();
+  } catch (error) {
+    console.error('Error in manual cart drawer update:', error);
+  }
+}
+
+function attachCartEventListeners() {
+  // Quantity increase
+  document.querySelectorAll('.btn-qty-increase').forEach(btn => {
+    btn.addEventListener('click', async function() {
+      const line = this.dataset.line;
+      const input = this.parentElement.querySelector('.cart-qty');
+      const newQty = parseInt(input.value) + 1;
+      await updateCartItem(line, newQty);
+    });
+  });
+
+  // Quantity decrease
+  document.querySelectorAll('.btn-qty-decrease').forEach(btn => {
+    btn.addEventListener('click', async function() {
+      const line = this.dataset.line;
+      const input = this.parentElement.querySelector('.cart-qty');
+      const newQty = Math.max(1, parseInt(input.value) - 1);
+      await updateCartItem(line, newQty);
+    });
+  });
+
+  // Remove item
+  document.querySelectorAll('.btn-remove-item').forEach(btn => {
+    btn.addEventListener('click', async function(e) {
+      e.preventDefault();
+      const line = this.dataset.line;
+      await updateCartItem(line, 0);
+    });
+  });
+
+  // Manual quantity input
+  document.querySelectorAll('.cart-qty').forEach(input => {
+    input.addEventListener('change', async function() {
+      const line = this.dataset.line;
+      const newQty = Math.max(1, parseInt(this.value) || 1);
+      await updateCartItem(line, newQty);
+    });
+  });
+}
+
+// Function to update cart item quantity
+async function updateCartItem(line, quantity) {
+  try {
+    const response = await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: line,
+        quantity: quantity
+      }),
+    });
+
+    if (!response.ok) throw new Error('Failed to update cart');
+
+    const cart = await response.json();
+    updateCartCount(cart.item_count);
+    await refreshCartDrawer();
+  } catch (error) {
+    console.error('Error updating cart item:', error);
+    showAlert('Failed to update cart', 'danger');
+  }
+}
+
+  // Update Cart Count
+  async function updateCartCount() {
+    try {
+      const response = await fetch('/cart.js');
+      if (!response.ok) throw new Error('Failed to fetch cart');
+
+      const cart = await response.json();
+      const cartCountElements = document.querySelectorAll('.cart-count, #cart-count');
+
+      cartCountElements.forEach(el => {
+        el.textContent = cart.item_count;
+        el.classList.add('animate__animated', 'animate__bounceIn');
+        setTimeout(() => {
+          el.classList.remove('animate__animated', 'animate__bounceIn');
+        }, 1000);
+      });
+
+    } catch (error) {
+      console.error('Error updating cart count:', error);
+    }
+  }
+
+  // Show Alert
+  function showAlert(message, type = 'success') {
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+    alert.style.zIndex = '1060';
+    alert.role = 'alert';
+    alert.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    document.body.appendChild(alert);
+
+    // Auto-dismiss after 3 seconds
+    setTimeout(() => {
+      const bsAlert = new bootstrap.Alert(alert);
+      bsAlert.close();
+    }, 3000);
+  }
+
+  // Initialize Bootstrap Tabs
+  function initTabs() {
+    const tabEls = document.querySelectorAll('[data-bs-toggle="tab"]');
+
+    tabEls.forEach(tabEl => {
+      tabEl.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tab = new bootstrap.Tab(this);
+        tab.show();
+      });
+    });
+  }
+
+  // Update add to cart button
+    function updateAddToCartButton(variant) {
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    if (!addToCartBtn) return;
+
+    if (variant.available) {
+        addToCartBtn.disabled = false;
+        addToCartBtn.querySelector('.btn-text').innerHTML =
+        `<i class="bi bi-cart-plus"></i> Add to Cart`;
+    } else {
+        addToCartBtn.disabled = true;
+        addToCartBtn.querySelector('.btn-text').textContent = 'Sold Out';
+    }
+    }
+
+// Helper function to format money (you might already have this in your theme)
+    function formatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2);
+    }
+</script>
